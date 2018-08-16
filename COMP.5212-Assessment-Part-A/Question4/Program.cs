@@ -10,19 +10,30 @@ namespace Question4
     {
         static void Main(string[] args)
         {
-            Person1 Person1 = new Person1("", "", "");
-            Console.WriteLine("Please enter the new person below:");
+            string loop = "y";
+            while(loop == "y"||loop == "Y")
+            { 
+                Person1 person1 = new Person1("", "");
+                Console.WriteLine("Please enter the new person below:\n");
 
-            Console.WriteLine("First Name: ");
-            Person1.FirstName = Console.ReadLine();
+                var people = new List<Person1>();
+                
+                Console.WriteLine("Enter your first name: ");
+                person1.FirstName = Console.ReadLine();
 
-            Console.WriteLine("Last Name");
-            Person1.LastName = Console.ReadLine();
+                Console.WriteLine("Enter your last name: ");
+                person1.LastName = Console.ReadLine();
 
-            Console.WriteLine("Enter year of birth");
-            Person1.YearOfBirth = Console.ReadLine();
+                Console.WriteLine("Enter year of birth");
+                person1.YearOfBirth = int.Parse(Console.ReadLine());
 
-            GetFullName(FirstName, LastName);
+                Console.WriteLine($"\nPerson: {person1.GetFullName()} is {person1.GetAge()} years old");
+
+                people.Add(new Person1(person1.FirstName, person1.LastName));
+
+                Console.WriteLine("Would you like too add another person? y or press any other key to exit");
+                loop = Console.ReadLine();
+            }
         }
     }
 }
